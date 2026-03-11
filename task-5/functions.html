@@ -1,0 +1,135 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Practice Tasks</title>
+</head>
+<body>
+
+<h2>JavaScript Array & String Practice</h2>
+<p>Open Console (F12) to see the output</p>
+
+<script>
+
+// 1️⃣ Employee Salary Analysis System
+
+let employees = [
+ {name:"Karthik", salary:32000},
+ {name:"Divya", salary:72000},
+ {name:"Rahul", salary:41000},
+ {name:"Sneha", salary:95000},
+ {name:"David", salary:28000}
+];
+
+let highSalary = employees.filter(emp => emp.salary > 40000);
+console.log("Employees salary > 40000:", highSalary);
+
+let firstHigh = employees.find(emp => emp.salary > 70000);
+console.log("First employee salary > 70000:", firstHigh);
+
+let totalSalary = employees.reduce((sum, emp) => sum + emp.salary, 0);
+console.log("Total salary:", totalSalary);
+
+let below20 = employees.some(emp => emp.salary < 20000);
+console.log("Any salary below 20000:", below20);
+
+let above20 = employees.every(emp => emp.salary > 20000);
+console.log("All salaries above 20000:", above20);
+
+
+// 2️⃣ E-commerce Product Search
+
+let products = ["camera","laptop","speaker","headphones","laptop"];
+
+console.log("Speaker exists:", products.includes("speaker"));
+console.log("First index of laptop:", products.indexOf("laptop"));
+console.log("Last index of laptop:", products.lastIndexOf("laptop"));
+console.log("Tablet exists:", products.includes("tablet"));
+
+
+// 3️⃣ Website Username Formatter
+
+let username = "   RameshKumar   ";
+
+let cleanName = username.trim();
+console.log("Trimmed:", cleanName);
+
+console.log("Uppercase:", cleanName.toUpperCase());
+console.log("Lowercase:", cleanName.toLowerCase());
+console.log("First 6 characters:", cleanName.slice(0,6));
+
+
+// 4️⃣ Game Platform Data Processing
+
+let games = ["basketball","volleyball","badminton","rugby"];
+
+games.forEach(game => {
+ console.log("Game:", game);
+});
+
+let gameList = games.map(game => "Game : " + game);
+console.log("Mapped array:", gameList);
+
+
+// 5️⃣ Student Marks Analyzer
+
+let marks = [78,56,91,34,67,82];
+
+let ascending = [...marks].sort((a,b)=>a-b);
+console.log("Ascending order:", ascending);
+
+let descending = [...marks].sort((a,b)=>b-a);
+console.log("Descending order:", descending);
+
+let reversed = [...marks].reverse();
+console.log("Reversed:", reversed);
+
+
+// 6️⃣ Salary Report Generator
+
+let salaries = [15000,25000,35000,45000];
+
+let total = salaries.reduce((sum,val)=>sum+val,0);
+console.log("Total salary paid:", total);
+
+let avg = total / salaries.length;
+console.log("Average salary:", avg);
+
+
+// 7️⃣ URL Processor
+
+let url = "learn-javascript-online";
+
+let arr = url.split("-");
+console.log("URL array:", arr);
+
+
+// 8️⃣ Job Role Modifier
+
+let role = "java developer";
+
+console.log("Replace java -> python:", role.replace("java","python"));
+console.log("Starts with java:", role.startsWith("java"));
+console.log("Ends with developer:", role.endsWith("developer"));
+
+
+// 9️⃣ Nested Array Data Cleanup
+
+let data = [10,20,[30,40,[50,60]]];
+
+let flatData = data.flat(2);
+console.log("Flattened array:", flatData);
+
+
+// 🔟 Sports Data Slice
+
+let sports = ["basketball","cricket","tennis","swimming","boxing"];
+
+console.log("Football & tennis equivalent slice:", sports.slice(1,3));
+console.log("First 3 sports:", sports.slice(0,3));
+
+</script>
+
+</body>
+</html>
+```
