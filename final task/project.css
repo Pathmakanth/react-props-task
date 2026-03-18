@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #eaeded;
+}
+
+/* Header */
+.header {
+  background: #131921;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.header button {
+  background: #febd69;
+  border: none;
+  padding: 8px;
+}
+
+/* Controls */
+.controls {
+  background: white;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input, select {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Product Card */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  height: 180px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.price {
+  color: #b12704;
+  font-weight: bold;
+}
+
+.rating {
+  color: #ffa41c;
+}
+
+.card button {
+  width: 100%;
+  padding: 10px;
+  background: #ffd814;
+  border: none;
+  cursor: pointer;
+}
+
+/* Skeleton Animation */
+.skeleton-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.skeleton-img,
+.skeleton-text {
+  background: #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-img {
+  height: 180px;
+}
+
+.skeleton-text {
+  height: 15px;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Error */
+.error {
+  text-align: center;
+  color: red;
+  font-size: 18px;
+}
+
+/* Cart */
+.cart-item {
+  background: white;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.remove {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .header {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart</title>
+  <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+
+<div class="header">
+  <h2>🛒 Your Cart</h2>
+  <a href="project.html"><button>Back</button></a>
+</div>
+
+<div id="cartItems"></div>
+<h3 style="padding:15px;">Total: ₹ <span id="total">0</span></h3>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function displayCart(){
+  let html = "";
+
+  cart.map(item => {
+    html += `
+    <div class="cart-item">
+      <h4>${item.title.substring(0,40)}</h4>
+      <p>₹ ${item.price} x ${item.qty}</p>
+      <button class="remove" onclick="removeItem(${item.id})">Remove</button>
+    </div>`;
+  });
+
+  document.getElementById("cartItems").innerHTML = html;
+
+  let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function removeItem(id){
+  cart = cart.filter(item => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+displayCart();
+</script>
+
+</body>
+</html>
