@@ -1,19 +1,22 @@
 import React from "react";
-import Child from "./Child";
+import Child from "./Child"; // ✅ correct
 
-const Parent = () => {
+function Parent() {
+  const students = [
+    { id: 1, name: "Arun", course: "React", isActive: true },
+    { id: 2, name: "Priya", course: "Node", isActive: false },
+    { id: 3, name: "Rahul", course: "JavaScript", isActive: true },
+    { id: 4, name: "Sneha", course: "Python", isActive: false },
+    { id: 5, name: "Kiran", course: "Java", isActive: true }
+  ];
+
   return (
-    <div className="container">
-      <h1>Employee Details</h1>
-
-      <Child name="Padmakanth" email="padmakanth@gmail.com" role="React Learner" />
-      <Child name="Ravi Kumar" email="ravi@gmail.com" role="Frontend Developer" />
-      <Child name="Meena Sharma" email="meena@gmail.com" role="UI Designer" />
-      <Child name="Arun Singh" email="arun@gmail.com" role="Backend Developer" />
-      <Child name="Priya Das" email="priya@gmail.com" role="Project Manager" />
-
+    <div>
+      {students.map((student) => (
+        <Child key={student.id} student={student} />
+      ))}
     </div>
   );
-};
+}
 
 export default Parent;

@@ -1,13 +1,17 @@
 import React from "react";
 
-const Child = ({ name, email, role }) => {
+function Child({ student }) {
   return (
     <div className="card">
-      <h2>{name}</h2>
-      <p><strong>Email:</strong> {email}</p>
-      <p><strong>Role:</strong> {role}</p>
+      <h2>{student.name}</h2>
+      <p>Course: {student.course}</p>
+
+      {/* Conditional Rendering */}
+      <p>
+        Status: {student.isActive ? "Active" : "Inactive"}
+      </p>
     </div>
   );
-};
+}
 
 export default Child;
