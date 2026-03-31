@@ -1,37 +1,65 @@
 body {
-  font-family: Arial;
-  background: #f2f2f2;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
 }
 
+/* Center container */
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 40px;
+  align-items: center;
+  height: 100vh;
 }
 
-.form {
-  background: white;
-  padding: 20px;
-  width: 300px;
-  border-radius: 10px;
+/* Title */
+h1 {
+  color: white;
+  margin-bottom: 20px;
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 8px;
+/* Timer display */
+.timer {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px 40px;
+  border-radius: 12px;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: blue;
-  color: white;
+  padding: 10px 25px;
+  font-size: 16px;
   border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
 }
 
-p {
-  color: red;
-  font-size: 12px;
+/* Individual button colors */
+button:nth-child(1) {
+  background-color: #28a745; /* Start */
+}
+
+button:nth-child(2) {
+  background-color: #dc3545; /* Stop */
+}
+
+button:nth-child(3) {
+  background-color: #ffc107; /* Reset */
+  color: black;
+}
+
+button:hover {
+  opacity: 0.9;
 }

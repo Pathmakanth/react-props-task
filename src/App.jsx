@@ -1,10 +1,11 @@
 import React from "react";
-import RegistrationForm from "./components/RegistrationForm";
+import Stopwatch from "./components/Stopwatch";
+import "./style.css";
 
 function App() {
   return (
     <div>
-      <RegistrationForm />
+      <Stopwatch />
     </div>
   );
 }
