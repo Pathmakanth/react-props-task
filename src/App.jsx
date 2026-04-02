@@ -1,11 +1,10 @@
 import React from "react";
-import Stopwatch from "./components/Stopwatch";
-import "./style.css";
+import ChatApp from "./components/ChatApp";
 
 function App() {
   return (
     <div>
-      <Stopwatch />
+      <ChatApp />
     </div>
   );
 }
