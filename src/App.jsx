@@ -1,11 +1,20 @@
-import React from "react";
-import ChatApp from "./components/ChatApp";
+import React, { useState } from "react";
+import { ThemeContext } from "./ThemeContext";
+import Profile from "./components/Profile";
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
-    <div>
-      <ChatApp />
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={theme}>
+        <Profile />
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
