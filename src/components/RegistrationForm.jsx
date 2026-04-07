@@ -1,129 +1,88 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
+import "../style.css";
 
-function RegistrationForm() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-    confirmPassword: "",
-    address: "",
-    city: "",
-    state: "",
-    country: "",
-    zip: "",
-    agree: false,
-  });
+// Initial State
+const initialState = {
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+  city: "",
+  state: "",
+  country: "",
+  zip: "",
+  dob: "",
+  gender: "",
+};
 
-  const [errors, setErrors] = useState({});
+// Reducer Function
+function reducer(state, action) {
+  switch (action.type) {
+    case "UPDATE_FIELD":
+      return {
+        ...state,
+        [action.field]: action.value,
+      };
 
-  const validate = () => {
-    let err = {};
+    case "RESET":
+      return initialState;
 
-    if (!form.name) err.name = "Name is required";
+    default:
+      return state;
+  }
+}
 
-    if (!form.email) {
-      err.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      err.email = "Invalid email";
-    }
+const RegistrationForm = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    if (!form.phone) {
-      err.phone = "Phone is required";
-    } else if (!/^\d{10}$/.test(form.phone)) {
-      err.phone = "Enter 10 digit number";
-    }
-
-    if (!form.password) {
-      err.password = "Password required";
-    } else if (form.password.length < 6) {
-      err.password = "Min 6 characters";
-    }
-
-    if (form.password !== form.confirmPassword) {
-      err.confirmPassword = "Passwords do not match";
-    }
-
-    if (!form.address) err.address = "Address required";
-    if (!form.city) err.city = "City required";
-    if (!form.state) err.state = "State required";
-    if (!form.country) err.country = "Country required";
-
-    if (!form.zip) {
-      err.zip = "Zip required";
-    } else if (!/^\d{5,6}$/.test(form.zip)) {
-      err.zip = "Invalid zip";
-    }
-
-    if (!form.agree) err.agree = "Accept terms";
-
-    setErrors(err);
-    return Object.keys(err).length === 0;
-  };
-
+  // Handle Change
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    setForm({
-      ...form,
-      [name]: type === "checkbox" ? checked : value,
+    dispatch({
+      type: "UPDATE_FIELD",
+      field: e.target.name,
+      value: e.target.value,
     });
   };
 
+  // Handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (validate()) {
-      alert("Registration Successful ✅");
-      console.log(form);
-    }
+    console.log(state);
+    alert("Form Submitted Successfully!");
   };
 
   return (
-    <div className="container">
-      <form className="form" onSubmit={handleSubmit}>
-        <h2>Registration Form</h2>
+    <div className="form-container">
+      <h2>Registration Form (useReducer)</h2>
 
-        <input name="name" placeholder="Name" onChange={handleChange} />
-        <p>{errors.name}</p>
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" value={state.name} onChange={handleChange} />
+        <input name="email" placeholder="Email" value={state.email} onChange={handleChange} />
+        <input name="phone" placeholder="Phone Number" value={state.phone} onChange={handleChange} />
+        <input name="address" placeholder="Address" value={state.address} onChange={handleChange} />
+        <input name="city" placeholder="City" value={state.city} onChange={handleChange} />
+        <input name="state" placeholder="State" value={state.state} onChange={handleChange} />
+        <input name="country" placeholder="Country" value={state.country} onChange={handleChange} />
+        <input name="zip" placeholder="Zip Code" value={state.zip} onChange={handleChange} />
 
-        <input name="email" placeholder="Email" onChange={handleChange} />
-        <p>{errors.email}</p>
+        <input type="date" name="dob" value={state.dob} onChange={handleChange} />
 
-        <input name="phone" placeholder="Phone" onChange={handleChange} />
-        <p>{errors.phone}</p>
+        <select name="gender" value={state.gender} onChange={handleChange}>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
 
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-        <p>{errors.password}</p>
-
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} />
-        <p>{errors.confirmPassword}</p>
-
-        <input name="address" placeholder="Address" onChange={handleChange} />
-        <p>{errors.address}</p>
-
-        <input name="city" placeholder="City" onChange={handleChange} />
-        <p>{errors.city}</p>
-
-        <input name="state" placeholder="State" onChange={handleChange} />
-        <p>{errors.state}</p>
-
-        <input name="country" placeholder="Country" onChange={handleChange} />
-        <p>{errors.country}</p>
-
-        <input name="zip" placeholder="Zip Code" onChange={handleChange} />
-        <p>{errors.zip}</p>
-
-        <div>
-          <input type="checkbox" name="agree" onChange={handleChange} />
-          <label> I agree to terms</label>
+        <div className="buttons">
+          <button type="submit">Submit</button>
+          <button type="button" onClick={() => dispatch({ type: "RESET" })}>
+            Reset
+          </button>
         </div>
-        <p>{errors.agree}</p>
-
-        <button type="submit">Register</button>
       </form>
     </div>
   );
-}
+};
 
 export default RegistrationForm;

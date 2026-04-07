@@ -1,111 +1,40 @@
-/* Global */
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  transition: 0.3s;
+.form-container {
+  width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f4f6f8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Theme Background */
-.light {
-  background: linear-gradient(135deg, #e3f2fd, #ffffff);
-  color: #222;
-}
-
-.dark {
-  background: linear-gradient(135deg, #1e1e2f, #121212);
-  color: #fff;
-}
-
-/* Profile Card */
-.profile {
-  max-width: 350px;
-  margin: 60px auto;
-  padding: 25px;
+.form-container h2 {
   text-align: center;
-  border-radius: 20px;
-  transition: 0.3s ease;
+  margin-bottom: 20px;
 }
 
-/* Card Colors */
-.profile.light {
-  background: #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.profile.dark {
-  background: #2a2a3b;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-}
-
-/* Title */
-.profile h2 {
-  margin-bottom: 15px;
-}
-
-/* Image Box */
-.img-box {
-  width: 150px;
-  height: 150px;
-  margin: 15px auto;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0f0f0;
-}
-
-.profile.dark .img-box {
-  background: #444;
-  border-color: #666;
-}
-
-/* Image */
-.img-box img {
+form input,
+form select {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-/* Placeholder Text */
-.img-box p {
-  font-size: 14px;
-  color: #777;
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
-/* Buttons */
 button {
-  margin: 8px;
   padding: 10px 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
   cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s;
 }
 
-/* Upload Button */
-button:first-of-type {
-  background: #4caf50;
-  color: white;
-}
-
-button:first-of-type:hover {
-  background: #45a049;
-}
-
-/* Theme Button */
-button:last-of-type {
-  background: #007bff;
-  color: white;
-}
-
-button:last-of-type:hover {
-  background: #0056b3;
-}
-
-/* Hover Effect */
-.profile:hover {
-  transform: translateY(-5px);
+button:hover {
+  background-color: #0056b3;
 }
